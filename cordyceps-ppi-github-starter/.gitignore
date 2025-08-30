@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+.snakemake/
+.ipynb_checkpoints/
+data/
+results/

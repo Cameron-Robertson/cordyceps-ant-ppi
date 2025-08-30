@@ -1,0 +1,8 @@
+name: cordyceps-ppi
+dependencies:
+  - python=3.11
+  - snakemake
+  - biopython
+  - pandas
+  - numpy
+  - matplotlib
