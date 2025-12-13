@@ -21,3 +21,8 @@ data/*
 data/raw/*.fasta
 data/raw/*.fa
 data/raw/*.gz
+
+# Ignore FASTA and compressed files anywhere under data/raw (including subfolders)
+data/raw/**/*.fasta
+data/raw/**/*.fa
+data/raw/**/*.gz
