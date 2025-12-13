@@ -2,5 +2,22 @@ __pycache__/
 *.py[cod]
 .snakemake/
 .ipynb_checkpoints/
-data/
 results/
+
+# Ignore all data by default
+data/*
+
+# Keep directory structure
+!data/
+!data/raw/
+!data/processed/
+
+# Allow small reference tables
+!data/raw/*.tsv
+!data/raw/*.csv
+!data/raw/README.md
+
+# Ignore large sequence files
+data/raw/*.fasta
+data/raw/*.fa
+data/raw/*.gz
