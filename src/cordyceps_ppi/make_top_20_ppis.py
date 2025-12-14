@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Oct 19 20:40:30 2025
+Created on Sun Dec 14 18:12:08 2025
 
 @author: Cameron
 """
@@ -11,7 +11,9 @@ Created on Sun Oct 19 20:40:30 2025
 import pandas as pd
 import re
 
-df = pd.read_excel("Ocf-Cf_final_strict_PPIs_from_MOESM3_4.xlsx")
+from pathlib import Path
+    
+
 
 # -----------------------------
 # Scoring Parameters (editable)
@@ -99,7 +101,48 @@ def score_ppi_row(row):
     total += wgcna_score(row)
     return total
 
-# To apply this to a dataframe:
-df['priority_score'] = df.apply(score_ppi_row, axis=1)
-df_top20 = df.sort_values('priority_score', ascending=False).head(20)
-df_top20.to_excel("Top20_PPIs_ranked2.xlsx", index=False)
+
+# -----------------------------
+# Main orchestration function
+# -----------------------------
+def run(
+    input_file: str,
+    output_file: str | None = None,
+    top_n: int = 20,
+) -> pd.DataFrame:
+    """
+    Load PPI reference dataset, score interactions, and return top N PPIs.
+    """
+
+    input_path = Path(input_file)
+
+    if not input_path.exists():
+        raise FileNotFoundError(f"Input file not found: {input_path.resolve()}")
+
+    # Load data
+    if input_path.suffix == ".xlsx":
+        df = pd.read_excel(input_path)
+    elif input_path.suffix in [".tsv", ".txt"]:
+        df = pd.read_csv(input_path, sep="\t")
+    elif input_path.suffix == ".csv":
+        df = pd.read_csv(input_path)
+    else:
+        raise ValueError(f"Unsupported input format: {input_path.suffix}")
+
+    # Apply scoring
+    df = df.copy()
+    df["priority_score"] = df.apply(score_ppi_row, axis=1)
+
+    df_top = df.sort_values("priority_score", ascending=False).head(top_n)
+
+    # Optional output
+    if output_file:
+        output_path = Path(output_file)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+
+        if output_path.suffix == ".xlsx":
+            df_top.to_excel(output_path, index=False)
+        else:
+            df_top.to_csv(output_path, sep="\t", index=False)
+
+    return df_top
