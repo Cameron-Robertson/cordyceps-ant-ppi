@@ -56,6 +56,21 @@ The project workflow consists of 5 conceptual phases:
 
 
 
+The LLMs ChatGPT5.1 and ChatGPT5.2 were used in the generation of source code and scripts.
+
+
+
+
+
+Reference for Will et al. (2023) paper this project built upon:
+
+
+
+Will, I., Beckerson, W.C., de Bekker, C., 2023. Using machine learning to predict protein-protein interactions between a zombie ant fungus and its carpenter ant host. Sci Rep 13, 13821. https://doi.org/10.1038/s41598-023-40764-8
+
+
+
+
 
 
 Running the scripts:
@@ -79,26 +94,5 @@ python scripts/make\_top\_20\_ppis\_cli.py \\
 &nbsp; data/raw/will\_et\_al\_final\_ppi\_ref\_input.tsv \\
 
 &nbsp; results/top20\_ppis.tsv
-
-
-
-
-
-
-
-The LLMs ChatGPT5.1 and ChatGPT5.2 were used in the generation of source code and scripts.
-
-
-
-
-
-
-
-Reference for Will et al. (2023) paper this project built upon:
-
-
-
-Will, I., Beckerson, W.C., de Bekker, C., 2023. Using machine learning to predict protein-protein interactions between a zombie ant fungus and its carpenter ant host. Sci Rep 13, 13821. https://doi.org/10.1038/s41598-023-40764-8
-
 
 
