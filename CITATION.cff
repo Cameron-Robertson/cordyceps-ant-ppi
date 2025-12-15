@@ -1,2 +1,16 @@
 cff-version: 1.2.0
-title: Cordyceps–Ant PPI pipeline
+title: "cordyceps-ant-ppi"
+message: "If you use this repository, please cite it as below."
+type: software
+authors:
+  - given-names: Cameron
+    family-names: Naismith-Robertson
+date-released: 2025-12-14
+repository-code: https://github.com/Cameron-Robertson/cordyceps-ant-ppi
+abstract: >
+  A computational pipeline for prioritising and structurally
+  evaluating protein–protein interactions between the
+  entomopathogenic fungus Ophiocordyceps camponoti-floridani
+  and its ant host Camponotus floridanus.
+license: MIT
+
